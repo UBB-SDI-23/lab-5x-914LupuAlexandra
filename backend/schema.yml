@@ -1,0 +1,1141 @@
+openapi: 3.0.3
+info:
+  title: ''
+  version: 0.0.0
+paths:
+  /api/schema/:
+    get:
+      operationId: api_schema_retrieve
+      description: |-
+        OpenApi3 schema for this API. Format can be selected via content negotiation.
+
+        - YAML: application/vnd.oai.openapi
+        - JSON: application/vnd.oai.openapi+json
+      parameters:
+      - in: query
+        name: format
+        schema:
+          type: string
+          enum:
+          - json
+          - yaml
+      - in: query
+        name: lang
+        schema:
+          type: string
+          enum:
+          - af
+          - ar
+          - ar-dz
+          - ast
+          - az
+          - be
+          - bg
+          - bn
+          - br
+          - bs
+          - ca
+          - cs
+          - cy
+          - da
+          - de
+          - dsb
+          - el
+          - en
+          - en-au
+          - en-gb
+          - eo
+          - es
+          - es-ar
+          - es-co
+          - es-mx
+          - es-ni
+          - es-ve
+          - et
+          - eu
+          - fa
+          - fi
+          - fr
+          - fy
+          - ga
+          - gd
+          - gl
+          - he
+          - hi
+          - hr
+          - hsb
+          - hu
+          - hy
+          - ia
+          - id
+          - ig
+          - io
+          - is
+          - it
+          - ja
+          - ka
+          - kab
+          - kk
+          - km
+          - kn
+          - ko
+          - ky
+          - lb
+          - lt
+          - lv
+          - mk
+          - ml
+          - mn
+          - mr
+          - ms
+          - my
+          - nb
+          - ne
+          - nl
+          - nn
+          - os
+          - pa
+          - pl
+          - pt
+          - pt-br
+          - ro
+          - ru
+          - sk
+          - sl
+          - sq
+          - sr
+          - sr-latn
+          - sv
+          - sw
+          - ta
+          - te
+          - tg
+          - th
+          - tk
+          - tr
+          - tt
+          - udm
+          - uk
+          - ur
+          - uz
+          - vi
+          - zh-hans
+          - zh-hant
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/vnd.oai.openapi:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/yaml:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/vnd.oai.openapi+json:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /baskets/:
+    get:
+      operationId: baskets_list
+      tags:
+      - baskets
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Basket'
+          description: ''
+    post:
+      operationId: baskets_create
+      tags:
+      - baskets
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Basket'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Basket'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Basket'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Basket'
+          description: ''
+  /baskets/{id}/:
+    get:
+      operationId: baskets_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - baskets
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BasketSerializerByID'
+          description: ''
+    put:
+      operationId: baskets_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - baskets
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BasketSerializerByID'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BasketSerializerByID'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BasketSerializerByID'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BasketSerializerByID'
+          description: ''
+    patch:
+      operationId: baskets_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - baskets
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedBasketSerializerByID'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedBasketSerializerByID'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedBasketSerializerByID'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BasketSerializerByID'
+          description: ''
+    delete:
+      operationId: baskets_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - baskets
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /productbasket/:
+    get:
+      operationId: productbasket_list
+      tags:
+      - productbasket
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProductBasket'
+          description: ''
+    post:
+      operationId: productbasket_create
+      tags:
+      - productbasket
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductBasket'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ProductBasket'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ProductBasket'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductBasket'
+          description: ''
+  /productbasket/{id}/:
+    get:
+      operationId: productbasket_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - productbasket
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductBasket'
+          description: ''
+    put:
+      operationId: productbasket_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - productbasket
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductBasket'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ProductBasket'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ProductBasket'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductBasket'
+          description: ''
+    patch:
+      operationId: productbasket_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - productbasket
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedProductBasket'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedProductBasket'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedProductBasket'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductBasket'
+          description: ''
+    delete:
+      operationId: productbasket_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - productbasket
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /products/:
+    get:
+      operationId: products_list
+      tags:
+      - products
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+          description: ''
+    post:
+      operationId: products_create
+      tags:
+      - products
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Product'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Product'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+          description: ''
+  /products/{id}/:
+    get:
+      operationId: products_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - products
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+          description: ''
+    put:
+      operationId: products_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - products
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Product'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Product'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+          description: ''
+    patch:
+      operationId: products_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - products
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedProduct'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedProduct'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedProduct'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+          description: ''
+    delete:
+      operationId: products_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - products
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /products/by-amount-baskets-have/:
+    get:
+      operationId: products_by_amount_baskets_have_list
+      tags:
+      - products
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProductsByAmountBasketsHave'
+          description: ''
+  /products/filter/{price}/:
+    get:
+      operationId: products_filter_list
+      parameters:
+      - in: path
+        name: price
+        schema:
+          type: string
+        required: true
+      tags:
+      - products
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+          description: ''
+  /users/:
+    get:
+      operationId: users_list
+      tags:
+      - users
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+          description: ''
+    post:
+      operationId: users_create
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+  /users/{id}/:
+    get:
+      operationId: users_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - users
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSerializerByID'
+          description: ''
+    put:
+      operationId: users_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserSerializerByID'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UserSerializerByID'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UserSerializerByID'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSerializerByID'
+          description: ''
+    patch:
+      operationId: users_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUserSerializerByID'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedUserSerializerByID'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedUserSerializerByID'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSerializerByID'
+          description: ''
+    delete:
+      operationId: users_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - users
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /users/by-number-baskets/:
+    get:
+      operationId: users_by_number_baskets_list
+      tags:
+      - users
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UsersOrderedByNumberBaskets'
+          description: ''
+components:
+  schemas:
+    Basket:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        price:
+          type: integer
+          readOnly: true
+        number_products:
+          type: integer
+          readOnly: true
+        user:
+          type: integer
+        products:
+          type: array
+          items:
+            type: integer
+          readOnly: true
+        date:
+          type: string
+          format: date
+        discount_code:
+          type: string
+          maxLength: 25
+      required:
+      - date
+      - id
+      - number_products
+      - price
+      - products
+      - user
+    BasketSerializerByID:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        price:
+          type: integer
+          readOnly: true
+        discount_code:
+          type: string
+          maxLength: 25
+        number_products:
+          type: integer
+          readOnly: true
+        date:
+          type: string
+          format: date
+        user:
+          allOf:
+          - $ref: '#/components/schemas/User'
+          readOnly: true
+        products:
+          type: array
+          items:
+            type: integer
+          readOnly: true
+      required:
+      - date
+      - id
+      - number_products
+      - price
+      - products
+      - user
+    PatchedBasketSerializerByID:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        price:
+          type: integer
+          readOnly: true
+        discount_code:
+          type: string
+          maxLength: 25
+        number_products:
+          type: integer
+          readOnly: true
+        date:
+          type: string
+          format: date
+        user:
+          allOf:
+          - $ref: '#/components/schemas/User'
+          readOnly: true
+        products:
+          type: array
+          items:
+            type: integer
+          readOnly: true
+    PatchedProduct:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        title:
+          type: string
+          maxLength: 50
+        type:
+          type: string
+          maxLength: 20
+        color:
+          type: string
+          maxLength: 20
+        size:
+          type: string
+          maxLength: 5
+        price:
+          type: integer
+        baskets:
+          type: array
+          items:
+            type: integer
+          readOnly: true
+    PatchedProductBasket:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        number_products:
+          type: integer
+        total_price:
+          type: integer
+          readOnly: true
+        product:
+          type: integer
+        basket:
+          type: integer
+    PatchedUserSerializerByID:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        first_name:
+          type: string
+          maxLength: 50
+        last_name:
+          type: string
+          maxLength: 50
+        phone_number:
+          type: string
+          maxLength: 20
+        email:
+          type: string
+          maxLength: 50
+        baskets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Basket'
+          readOnly: true
+    Product:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        title:
+          type: string
+          maxLength: 50
+        type:
+          type: string
+          maxLength: 20
+        color:
+          type: string
+          maxLength: 20
+        size:
+          type: string
+          maxLength: 5
+        price:
+          type: integer
+        baskets:
+          type: array
+          items:
+            type: integer
+          readOnly: true
+      required:
+      - baskets
+      - color
+      - id
+      - size
+      - title
+      - type
+    ProductBasket:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        number_products:
+          type: integer
+        total_price:
+          type: integer
+          readOnly: true
+        product:
+          type: integer
+        basket:
+          type: integer
+      required:
+      - basket
+      - id
+      - product
+      - total_price
+    ProductsByAmountBasketsHave:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        title:
+          type: string
+          maxLength: 50
+        type:
+          type: string
+          maxLength: 20
+        color:
+          type: string
+          maxLength: 20
+        size:
+          type: string
+          maxLength: 5
+        price:
+          type: integer
+        total_products:
+          type: integer
+          readOnly: true
+      required:
+      - color
+      - id
+      - size
+      - title
+      - total_products
+      - type
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        first_name:
+          type: string
+          maxLength: 50
+        last_name:
+          type: string
+          maxLength: 50
+        address:
+          type: string
+          maxLength: 100
+        phone_number:
+          type: string
+          maxLength: 20
+        email:
+          type: string
+          maxLength: 50
+      required:
+      - email
+      - first_name
+      - id
+      - last_name
+      - phone_number
+    UserSerializerByID:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        first_name:
+          type: string
+          maxLength: 50
+        last_name:
+          type: string
+          maxLength: 50
+        phone_number:
+          type: string
+          maxLength: 20
+        email:
+          type: string
+          maxLength: 50
+        baskets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Basket'
+          readOnly: true
+      required:
+      - baskets
+      - email
+      - first_name
+      - id
+      - last_name
+      - phone_number
+    UsersOrderedByNumberBaskets:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        first_name:
+          type: string
+          maxLength: 50
+        last_name:
+          type: string
+          maxLength: 50
+        address:
+          type: string
+          maxLength: 100
+        phone_number:
+          type: string
+          maxLength: 20
+        email:
+          type: string
+          maxLength: 50
+        number_baskets:
+          type: integer
+          readOnly: true
+      required:
+      - email
+      - first_name
+      - id
+      - last_name
+      - number_baskets
+      - phone_number
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
