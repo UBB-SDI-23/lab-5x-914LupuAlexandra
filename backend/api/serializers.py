@@ -13,6 +13,7 @@ class ProductSerializer(serializers.ModelSerializer):
     def validate_price(self, value):
         if value <= 0:
             raise ValidationError("The price must be positive")
+        return value
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -71,6 +72,7 @@ class ProductBasketSerializer(serializers.ModelSerializer):
     def validate_number_products(self, value):
         if value <= 0:
             raise ValidationError("The number of products must be positive!")
+        return value
 
     class Meta:
         model = ProductBasket
