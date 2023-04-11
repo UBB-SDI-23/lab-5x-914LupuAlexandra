@@ -1,0 +1,21 @@
+<body>
+  <h2>Add product</h2>
+  <form (submit)="addProduct()">
+    <label for="title">Title</label>
+    <input id="title" name="title" [(ngModel)]="title" />
+    <label for="type">Type</label>
+    <input id="type" name="type" [(ngModel)]="type" />
+    <label for="color">Color</label>
+    <input id="color" name="color" [(ngModel)]="color" />
+    <label for="size">Size</label>
+    <input id="size" name="size" [(ngModel)]="size" />
+    <label for="price">Price</label>
+    <input id="price" name="price" [(ngModel)]="price" />
+
+    <div class="button">
+      <button type="submit">Add</button>
+    </div>
+    
+  </form>
+</body>
+

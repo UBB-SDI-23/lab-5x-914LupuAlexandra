@@ -1,0 +1,23 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+
+th, td {
+  padding-top: 5px;
+  padding-bottom: 10px;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+table tr:nth-child(odd) td {
+  background-color: #dcfcf3;
+}
+
+table tr:nth-child(even) td {
+  background-color: #f6fcdc;
+}

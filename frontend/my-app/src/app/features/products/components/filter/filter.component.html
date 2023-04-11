@@ -1,0 +1,24 @@
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Type</th>
+        <th>Color</th>
+        <th>Price</th>
+        <th>Size</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products; let i = index">
+        <td>{{i + 1}}</td>
+        <td>{{product.title}}</td>
+        <td>{{product.type}}</td>
+        <td>{{product.color}}</td>
+        <td>{{product.price}}</td>
+        <td>{{product.size}}</td>
+      </tr>
+    </tbody>
+  </table>
+</body>

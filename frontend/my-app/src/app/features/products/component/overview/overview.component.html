@@ -1,0 +1,103 @@
+<body>
+  <h2>Products</h2>
+  <button class="add" (click)="goToAdd()">Add product</button>
+  <div class="filter">
+    <label for="priceFilter">Filter products by minimum price</label>
+    <input id="priceFilter" name="priceFilter" [(ngModel)]="priceFilter" />
+
+    <ng-container *ngIf="priceFilter">
+      <form (submit)="filterProducts(priceFilter)">
+        <div class="button">
+          <button type="submit">Filter</button>
+        </div>
+      </form>
+
+    </ng-container>
+
+  </div>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+        <td class="idButton" mat-cell *matCellDef="let product; let i=index" a (click)="goToDetails(product.id)">{{i + 1}}</td>
+      </ng-container>
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
+        <td mat-cell *matCellDef="let product">{{product.title}}</td>
+
+      </ng-container>
+      <ng-container matColumnDef="type">
+
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Type</th>
+        <td mat-cell *matCellDef="let product">{{product.type}}</td>
+
+      </ng-container>
+      <ng-container matColumnDef="color">
+
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Color</th>
+        <td mat-cell *matCellDef="let product">{{product.color}}</td>
+
+      </ng-container>
+      <ng-container matColumnDef="size">
+
+        <th mat-header-cell *matHeaderCellDef>Size</th>
+        <td mat-cell *matCellDef="let product">{{product.size}}</td>
+
+      </ng-container>
+      <ng-container matColumnDef="price">
+
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Price</th>
+        <td mat-cell *matCellDef="let product">{{product.price}}</td>
+
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <!--<th mat-sort-header="title">Title</th>
+  <th mat-sort-header="type">Type</th>
+  <th mat-sort-header="color">Color</th>
+  <th mat-sort-header="price">Price</th>
+  <th mat-sort-header="size">Size</th>-->
+      <!--<tbody>
+    <tr *ngFor="let product of products; let i = index">
+      <td class="idButton"><a (click)="goToDetails(product.id)">{{i + 1}}</a></td>
+      <td>{{product.title}}</td>
+      <td>{{product.type}}</td>
+      <td>{{product.color}}</td>
+      <td>{{product.price}}</td>
+      <td>{{product.size}}</td>
+    </tr>
+  </tbody>-->
+    </table>
+    <mat-paginator [pageSize]=25 [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+
+    </mat-paginator>
+  </div>
+
+  <!--<div class="table">
+    <table>
+      <thead>
+        <tr>
+          <th a (click)="sortNumber()" >Id<i class="fa fa-sort"></i></th>
+          <th a (click)="sortString()">Title</th>
+          <th a (click)="sortString()">Type</th>
+          <th a (click)="sortString()">Color</th>
+          <th a (click)="sortNumber()">Price</th>
+          <th>Size</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products; let i = index">
+          <td class="idButton"><a (click)="goToDetails(product.id)">{{i + 1}}</a></td>
+          <td>{{product.title}}</td>
+          <td>{{product.type}}</td>
+          <td>{{product.color}}</td>
+          <td>{{product.price}}</td>
+          <td>{{product.size}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>-->
+
+</body>

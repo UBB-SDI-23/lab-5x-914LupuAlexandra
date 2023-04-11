@@ -1,0 +1,35 @@
+
+<body>
+  <ng-container *ngIf="product">
+
+    <table>
+      <tr>
+        <td><b>Title:</b></td>
+        <td>{{product.title}}</td>
+      </tr>
+      <tr>
+        <td><b>Type:</b></td>
+        <td>{{product.type}}</td>
+      </tr>
+      <tr>
+        <td><b>Color:</b></td>
+        <td>{{product.color}}</td>
+      </tr>
+      <tr>
+        <td><b>Size:</b></td>
+        <td>{{product.size}}</td>
+      </tr>
+      <tr>
+        <td><b>Price:</b></td>
+        <td>{{product.price}}</td>
+      </tr>
+
+    </table>
+
+    <div class="buttons">
+      <button (click)="goToUpdate(product.id)">Update Details</button>
+      <button (click)="goToDelete(product.id)">Delete Product</button>
+    </div>
+  </ng-container>
+</body>
+
