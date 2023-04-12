@@ -13,9 +13,6 @@ class Product(models.Model):
     def __str__(self):
         return self.title
 
-    @property
-    def get_price(self):
-        return self.price
 
 
 class User(models.Model):

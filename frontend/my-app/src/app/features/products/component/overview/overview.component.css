@@ -25,11 +25,12 @@ table {
   background-color: #c6e3c3;
   width: 50%;
   margin-top: 10px;
-
+  font-family: 'Raleway', sans-serif;
 }
 .table {
-    display:flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
+
 }
 
 table:fullscreen {
@@ -59,12 +60,13 @@ a:hover {
 }
 
 body {
-    display: flex;
-    flex-direction:column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 150px;
-    margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 150px;
+  margin-bottom: 15px;
+  font-family: 'Raleway', sans-serif;
 }
 
 input {

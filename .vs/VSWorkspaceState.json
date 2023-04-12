@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\frontend",
+    "\\frontend\\my-app",
+    "\\frontend\\my-app\\src\\app\\features\\products",
+    "\\frontend\\my-app\\src\\app\\features\\products\\component",
+    "\\frontend\\my-app\\src\\app\\features\\products\\component\\overview"
+  ],
+  "PreviewInSolutionExplorer": false
+}

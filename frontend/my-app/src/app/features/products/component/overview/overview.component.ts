@@ -36,13 +36,13 @@ export class OverviewComponent implements OnInit {
       this.dataSource = new MatTableDataSource(products);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
-      this.dataSource.sortingDataAccessor = (data: any, sortHeaderId: string): string => {
-        if (typeof data[sortHeaderId] === 'string') {
-          return data[sortHeaderId].toLocaleLowerCase();
-        }
+      //this.dataSource.sortingDataAccessor = (data: any, sortHeaderId: string): string => {
+      //  if (typeof data[sortHeaderId] === 'string') {
+      //    return data[sortHeaderId].toLocaleLowerCase();
+      //  }
 
-        return data[sortHeaderId];
-      };
+      //  return data[sortHeaderId];
+      //};
     })
   }
 
