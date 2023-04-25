@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ApiService } from '../../../../common/services.api.service.service';
-import { Product, ProductDTO } from '../../component/overview/models/products.models';
+import { ApiService } from '../../../../common/services/api.service';
+import { Basket } from '../../../models/basket.models';
+import { Product, ProductDTO } from '../../../models/product.models';
+
 
 @Component({
   selector: 'app-update',
-  templateUrl: './update.component.html',
-  styleUrls: ['./update.component.css']
+  templateUrl: './update.product.component.html',
+  styleUrls: ['./update.product.component.css']
 })
-export class UpdateComponent implements OnInit{
-  productId?: string;
+export class UpdateProductComponent implements OnInit{
+  productId?: number;
   title?: string;
   type?: string;
   color?: string;
@@ -39,7 +41,7 @@ export class UpdateComponent implements OnInit{
         type: this.type,
         color: this.color,
         price: this.price,
-        size: this.size
+        size: this.size,
       }
       this.apiSvc.updateProduct(this.productId, product).subscribe((result: ProductDTO) => {
         this.router.navigateByUrl('products');

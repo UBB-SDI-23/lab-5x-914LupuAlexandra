@@ -3,17 +3,17 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { ApiService } from '../../../../common/services.api.service.service';
-import { Product } from './models/products.models';
+import { ApiService } from '../../../../common/services/api.service';
+import { Product } from '../../../models/product.models';
 
 
 
 @Component({
   selector: 'app-overview',
-  templateUrl: './overview.component.html',
-  styleUrls: ['./overview.component.css']
+  templateUrl: './overview.product.component.html',
+  styleUrls: ['./overview.product.component.css']
 })
-export class OverviewComponent implements OnInit {
+export class OverviewProductComponent implements OnInit {
   products: Product[] = [];
   priceFilter!: number;
   displayedColumns: string[] = ['id', 'title', 'type', 'color', 'size', 'price'];

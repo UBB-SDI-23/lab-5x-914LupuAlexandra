@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
-import { ApiService } from '../../../../common/services.api.service.service';
-import { Product } from '../../component/overview/models/products.models';
+import { ApiService } from '../../../../common/services/api.service';
+import { Product } from '../../../models/product.models';
 
 @Component({
   selector: 'app-details',
-  templateUrl: './details.component.html',
-  styleUrls: ['./details.component.css']
+  templateUrl: './details.product.component.html',
+  styleUrls: ['./details.product.component.css']
 })
-export class DetailsComponent implements OnInit{
-  productId?: string;
+export class DetailsProductComponent implements OnInit{
+  productId?: number;
   product?: Product;
   constructor(private apiSvc: ApiService, private activatedRoute: ActivatedRoute, private router:Router) { }
 
@@ -23,12 +23,12 @@ export class DetailsComponent implements OnInit{
     });
     
   }
-  goToUpdate(productId: string) {
+  goToUpdate(productId: number) {
     this.router.navigateByUrl(`products/update/${this.productId}`);
 
   }
 
-  goToDelete(productId: string) {
+  goToDelete(productId: number) {
     this.router.navigateByUrl(`products/delete/${this.productId}`);
   }
 

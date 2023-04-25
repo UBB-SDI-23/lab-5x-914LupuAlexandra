@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiService } from '../../../common/services.api.service.service';
-import { ProductDTO, Product } from '../component/overview/models/products.models';
+import { ApiService } from '../../../../common/services/api.service';
+import { Product, ProductDTO } from '../../../models/product.models';
 
 @Component({
   selector: 'app-add',
-  templateUrl: './add.component.html',
-  styleUrls: ['./add.component.css']
+  templateUrl: './add.product.component.html',
+  styleUrls: ['./add.product.component.css']
 })
-export class AddComponent {
+export class AddProductComponent {
   title?: string;
   type?: string;
   color?: string;
@@ -24,7 +24,7 @@ export class AddComponent {
         type: this.type,
         color: this.color,
         price: this.price,
-        size: this.size
+        size: this.size,
       }
       this.apiSvc.addProduct(product).subscribe((result: Product) => {
         this.router.navigateByUrl('products');

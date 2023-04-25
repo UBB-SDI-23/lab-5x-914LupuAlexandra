@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ApiService } from '../../../../common/services.api.service.service';
+import { ApiService } from '../../../../common/services/api.service';
 
 @Component({
   selector: 'app-delete',
-  templateUrl: './delete.component.html',
-  styleUrls: ['./delete.component.css']
+  templateUrl: './delete.product.component.html',
+  styleUrls: ['./delete.product.component.css']
 })
-export class DeleteComponent implements OnInit {
-  productId?: string;
+export class DeleteProductComponent implements OnInit {
+  productId?: number;
 
   constructor(private apiSrv: ApiService, private activatedRoute: ActivatedRoute, private router: Router) { }
 

@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ApiService } from '../../../../common/services.api.service.service';
-import { Product } from '../../component/overview/models/products.models';
+import { ApiService } from '../../../../common/services/api.service';
+import { Product } from '../../../models/product.models';
 
 @Component({
   selector: 'app-filter',
-  templateUrl: './filter.component.html',
-  styleUrls: ['./filter.component.css']
+  templateUrl: './filter.product.component.html',
+  styleUrls: ['./filter.product.component.css']
 })
-export class FilterComponent implements OnInit {
+export class FilterProductComponent implements OnInit {
   products: Product[] = [];
-  priceFilter?: string;
+  priceFilter?: number;
 
   constructor(private apiSvc: ApiService, private activatedRoute: ActivatedRoute) { }
 

@@ -1,0 +1,14 @@
+<body>
+  <h2>Update basket</h2>
+  <mat-form-field appearance="fill">
+    <!--<mat-label>{{date}}</mat-label>-->
+    <input [(ngModel)]="selectedDate" matInput [matDatepicker]="picker" [value]="date">
+    <mat-hint>MM-DD-YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <label for="discount_code">Discount code</label>
+  <input id="discount_code" name="discount_code" [(ngModel)]="discount_code" />
+
+  <button (click)="updateBasket()">Update</button>
+</body>

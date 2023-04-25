@@ -1,0 +1,89 @@
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <h2>Baskets</h2>
+  <button class="add" (click)="goToAdd()">Add product</button>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+        <td class="idButton" mat-cell *matCellDef="let basket; let i=index" a (click)="goToDetails(basket.id)">{{i + 1}}</td>
+      </ng-container>
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Price</th>
+        <td mat-cell *matCellDef="let basket">{{basket.price}}</td>
+
+      </ng-container>
+      <ng-container matColumnDef="number_products">
+
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Number products</th>
+        <td mat-cell *matCellDef="let basket">{{basket.number_products}}</td>
+
+      </ng-container>
+      <ng-container matColumnDef="date">
+
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+        <td mat-cell *matCellDef="let basket">{{basket.date}}</td>
+
+      </ng-container>
+      <ng-container matColumnDef="discount_code">
+
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Discount code</th>
+        <td mat-cell *matCellDef="let basket">{{basket.discount_code}}</td>
+
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <!--<th mat-sort-header="title">Title</th>
+      <th mat-sort-header="type">Type</th>
+      <th mat-sort-header="color">Color</th>
+      <th mat-sort-header="price">Price</th>
+      <th mat-sort-header="size">Size</th>-->
+      <!--<tbody>
+        <tr *ngFor="let product of products; let i = index">
+          <td class="idButton"><a (click)="goToDetails(product.id)">{{i + 1}}</a></td>
+          <td>{{product.title}}</td>
+          <td>{{product.type}}</td>
+          <td>{{product.color}}</td>
+          <td>{{product.price}}</td>
+          <td>{{product.size}}</td>
+        </tr>
+      </tbody>-->
+    </table>
+    <mat-paginator [pageSize]=25 [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+
+    </mat-paginator>
+  </div>
+
+  <!--<div class="table">
+    <table>
+      <thead>
+        <tr>
+          <th a (click)="sortNumber()" >Id<i class="fa fa-sort"></i></th>
+          <th a (click)="sortString()">Title</th>
+          <th a (click)="sortString()">Type</th>
+          <th a (click)="sortString()">Color</th>
+          <th a (click)="sortNumber()">Price</th>
+          <th>Size</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products; let i = index">
+          <td class="idButton"><a (click)="goToDetails(product.id)">{{i + 1}}</a></td>
+          <td>{{product.title}}</td>
+          <td>{{product.type}}</td>
+          <td>{{product.color}}</td>
+          <td>{{product.price}}</td>
+          <td>{{product.size}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>-->
+
+</body>

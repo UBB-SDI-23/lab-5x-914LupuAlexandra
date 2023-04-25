@@ -1,12 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './common/home/home.component';
-import { AddComponent } from './features/products/add/add.component';
-import { OverviewComponent } from './features/products/component/overview/overview.component';
-import { DeleteComponent } from './features/products/components/delete/delete.component';
-import { DetailsComponent } from './features/products/components/details/details.component';
-import { FilterComponent } from './features/products/components/filter/filter.component';
-import { UpdateComponent } from './features/products/components/update/update.component';
+import { HomeComponent } from './home/home.component';
+import { DeleteProductComponent } from './features/products/components/delete.product/delete.product.component';
+import { DetailsProductComponent } from './features/products/components/details.product/details.product.component';
+import { FilterProductComponent } from './features/products/components/filter.product/filter.product.component';
+import { UpdateProductComponent } from './features/products/components/update.product/update.product.component';
+import { AddProductComponent } from './features/products/components/add.product/add.product.component';
+import { OverviewProductComponent } from './features/products/components/overview.product/overview.product.component';
+import { OverviewBasketComponent } from './features/baskets/components/overview.basket/overview.basket.component';
+import { AddBasketComponent } from './features/baskets/components/add.basket/add.basket.component';
+import { DetailsBasketComponent } from './features/baskets/components/details.basket/details.basket.component';
+import { DeleteBasketComponent } from './features/baskets/components/delete.basket/delete.basket.component';
+import { UpdateBasketComponent } from './features/baskets/components/update.basket/update.basket.component';
+
 
 const routes: Routes = [
   {
@@ -15,29 +21,48 @@ const routes: Routes = [
   },
   {
     path: "products",
-    component: OverviewComponent
+    component: OverviewProductComponent
   },
   {
     path: "products/add",
-    component: AddComponent
+    component: AddProductComponent
   },
   {
     path: "products/update/:id",
-    component: UpdateComponent
+    component: UpdateProductComponent
   },
   {
     path: "products/delete/:id",
-    component: DeleteComponent
+    component: DeleteProductComponent
   },
   {
     path: "products/filter/:priceFilter",
-    component: FilterComponent
+    component: FilterProductComponent
   },
   {
     path: "products/:id",
-    component: DetailsComponent
+    component: DetailsProductComponent
   },
-
+  {
+    path: "baskets",
+    component: OverviewBasketComponent
+  },
+  {
+    path: "baskets/add",
+    component: AddBasketComponent
+  },
+  {
+    path: "baskets/update/:id",
+    component: UpdateBasketComponent
+  },
+  {
+    path: "baskets/delete/:id",
+    component: DeleteBasketComponent
+  },
+  {
+    path: "baskets/:id",
+    component: DetailsBasketComponent
+  },
 
 
 ];

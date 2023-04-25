@@ -1,0 +1,42 @@
+
+<body>
+  <ng-container *ngIf="basket">
+    <div class="content">
+      <table>
+        <tr>
+          <td><b>Price:</b></td>
+          <td>{{basket.price}}</td>
+        </tr>
+        <tr>
+          <td><b>Number products:</b></td>
+          <td>{{basket.number_products}}</td>
+        </tr>
+        <tr>
+          <td><b>User:</b></td>
+          <td>{{basket.user.id}} | {{basket.user.first_name}} {{basket.user.last_name}}</td>
+        </tr>
+        <tr>
+          <td><b>Date:</b></td>
+          <td>{{basket.date}}</td>
+        </tr>
+        <tr>
+          <td><b>Discount code:</b></td>
+          <td>{{basket.discount_code}}</td>
+        </tr>
+        <tr>
+          <td><b>Products:</b></td>
+          <ul>
+            <li *ngFor="let product of products">{{product.id}} | {{product.title}}</li>
+          </ul>
+        </tr>
+      </table>
+
+
+    </div>
+    <div class="buttons">
+      <button (click)="goToUpdate(basket.id)">Update Details</button>
+      <button (click)="goToDelete(basket.id)">Delete Basket</button>
+    </div>
+  </ng-container>
+</body>
+
