@@ -11,7 +11,7 @@ import { User } from '../../features/models/user.models';
 })
 export class ApiService {
 
-  baseUrl = 'http://ec2-13-49-221-23.eu-north-1.compute.amazonaws.com:80/api/';
+  baseUrl = 'http://ec2-16-171-46-155.eu-north-1.compute.amazonaws.com:80/api/';
 
   constructor(private http: HttpClient) { }
 

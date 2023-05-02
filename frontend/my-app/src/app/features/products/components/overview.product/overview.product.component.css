@@ -24,20 +24,14 @@ button:hover {
 table {
   background-color: #c6e3c3;
   width: 50%;
+  
   font-family: 'Raleway', sans-serif;
 }
 .table {
   display: flex;
   justify-content: center;
-
+  
 }
-
-table:fullscreen {
-  background-color: #c6e3c3;
-  width: 300px;
-}
-
-
 
 th, td {
   padding-top: 5px;
