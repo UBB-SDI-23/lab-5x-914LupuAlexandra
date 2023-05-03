@@ -17,7 +17,7 @@ class FilterByPrice(generics.ListAPIView):
 
 
 class ProductList(generics.ListCreateAPIView):
-    queryset = Product.objects.all()
+    queryset = Product.objects.all()[:100]
     serializer_class = ProductSerializer
 
 
@@ -27,7 +27,7 @@ class ProductDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 class UserList(generics.ListCreateAPIView):
-    queryset = User.objects.all()
+    queryset = User.objects.all()[:100]
     serializer_class = UserSerializer
 
 
@@ -37,7 +37,7 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 class BasketList(generics.ListCreateAPIView):
-    queryset = Basket.objects.all()
+    queryset = Basket.objects.all().[:100]
     serializer_class = BasketSerializer
 
 
@@ -47,7 +47,7 @@ class BasketDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 class ProductBasketList(generics.ListCreateAPIView):
-    queryset = ProductBasket.objects.all()
+    queryset = ProductBasket.objects.all().[:100]
     serializer_class = ProductBasketSerializer
 
 
