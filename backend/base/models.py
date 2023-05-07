@@ -8,7 +8,7 @@ class Product(models.Model):
     color = models.CharField(max_length=20)
     size = models.CharField(max_length=5)
     price = models.IntegerField(default=0)
-    description = models.CharField(max_length=500, default="")
+    description = models.CharField(max_length=500, default="") 
     baskets = models.ManyToManyField('base.Basket', through='base.ProductBasket')
 
     def __str__(self):
